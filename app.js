@@ -3,6 +3,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const express = require('express');
 const app = express();
+let PORT = process.env.PORT || 5000;
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -100,4 +101,4 @@ app.get('/fetch-data', (request, response, error) => {
   run_data_scripts();
 })
 
-app.listen(5000, () => console.log(`logging...`))
+app.listen(PORT, () => console.log(`logging...`))
