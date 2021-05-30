@@ -38,7 +38,6 @@ app.get('/stats', (req, response, error) => {
 })
 
 app.use('/get-token', (request, response, error) => {
-  console.log(request.query.code)
   if(request.query.code) {
     axios.post('https://dribbble.com/oauth/token',  {
       client_id: process.env.CLIENT_ID,
@@ -56,8 +55,6 @@ app.use('/get-token', (request, response, error) => {
 
 app.use('/fetch-data', (request, response, error) => {
   const access_token_n = request.query.access_token;
-  let all_data = [];
-  let likes;
 
   const fetch_user_details = async () => {
     return await axios('https://api.dribbble.com/v2/user/', {
