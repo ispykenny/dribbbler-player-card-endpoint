@@ -54,7 +54,7 @@ app.use('/get-token', (request, response, error) => {
 })
 
 
-app.get('/fetch-data', (request, response, error) => {
+app.use('/fetch-data', (request, response, error) => {
   const access_token_n = request.query.access_token;
   let all_data = [];
   let likes;
