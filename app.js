@@ -11,6 +11,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get('/', (req, res, err) => res.send('hello from index page'))
+
 app.get('/stats', (req, response, error) => {
   const url = req.query.url;
   axios(url)
