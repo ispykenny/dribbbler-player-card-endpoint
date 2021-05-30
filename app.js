@@ -11,8 +11,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/', (req, res, err) => res.send('hello from index page'))
-
 app.get('/stats', (req, response, error) => {
   const url = req.query.url;
   axios(url)
@@ -39,8 +37,8 @@ app.get('/stats', (req, response, error) => {
   .catch((error) => console.log(error))
 })
 
-app.get('/get-token', (request, response, error) => {
-  response.send('weee')
+app.use('/get-token', (request, response, error) => {
+  console.log(request.query.code)
   if(request.query.code) {
     axios.post('https://dribbble.com/oauth/token',  {
       client_id: process.env.CLIENT_ID,
@@ -50,13 +48,14 @@ app.get('/get-token', (request, response, error) => {
     }).then((res) => {
       response.redirect(`/fetch-data?access_token=${res.data.access_token}`);
     }).catch((error) => console.log(error))
+  } else {
+    response.send('welp')
   }
 })
 
 
 app.get('/fetch-data', (request, response, error) => {
   const access_token_n = request.query.access_token;
-  console.log(access_token_n, 'weeeee')
   let all_data = [];
   let likes;
 
