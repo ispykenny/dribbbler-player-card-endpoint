@@ -82,10 +82,10 @@ app.get('/fetch-data', (request, response, error) => {
       promises.push(
         axios(`https://dribbbler-player-card.herokuapp.com/?url=${item.html_url}`).then((res) => {
           data.push(res.data)
-        })
+        }).catch((err) => console.log(err))
       )
     })
-    let all_data = await Promise.all(promises).then(() => data)
+    let all_data = await Promise.all(promises).then(() => data).catch((err) => console.log(err))
     return all_data
   }
 
