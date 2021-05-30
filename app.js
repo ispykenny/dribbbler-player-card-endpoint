@@ -46,7 +46,7 @@ app.get('/get-token', (request, response, error) => {
       code: request.query.code,
       redirect_uri: 'http://localhost:3000'
     }).then((res) => {
-      response.redirect(`/fetch-data/?access_token=${res.data.access_token}`);
+      response.redirect(`/fetch-data?access_token=${res.data.access_token}`);
     }).catch((error) => console.log(error))
   }
 })
@@ -82,7 +82,7 @@ app.get('/fetch-data', (request, response, error) => {
     let promises = []
     urls.forEach((item) => {
       promises.push(
-        axios(`https://dribbbler-player-card.herokuapp.com/stats?url=${item.html_url}`).then((res) => {
+        axios(`https://dribbbler-player-card.herokuapp.com/?url=${item.html_url}`).then((res) => {
           data.push(res.data)
         }).catch((err) => console.log(err))
       )
