@@ -38,6 +38,7 @@ app.get('/stats', (req, response, error) => {
 })
 
 app.get('/get-token', (request, response, error) => {
+  console.log(request.query.code, 'wee')
   if(request.query.code) {
     axios.post('https://dribbble.com/oauth/token',  {
       client_id: process.env.CLIENT_ID,
@@ -53,6 +54,7 @@ app.get('/get-token', (request, response, error) => {
 
 app.get('/fetch-data', (request, response, error) => {
   const access_token_n = request.query.access_token;
+  console.log(access_token_n, 'weeeee')
   let all_data = [];
   let likes;
 
