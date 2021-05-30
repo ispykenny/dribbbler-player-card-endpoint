@@ -37,7 +37,7 @@ app.get('/stats', (req, response, error) => {
   .catch((error) => console.log(error))
 })
 
-app.use('/get-token', (request, response, error) => {
+app.get('/get-token', (request, response, error) => {
   if(request.query.code) {
     axios.post('https://dribbble.com/oauth/token',  {
       client_id: process.env.CLIENT_ID,
