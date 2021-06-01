@@ -6,7 +6,7 @@ const app = express();
 let PORT = process.env.PORT || 5000;
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "https://dribbbler-players-card.netlify.app");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
@@ -43,7 +43,7 @@ app.use('/get-token', (request, response, error) => {
       client_id: process.env.CLIENT_ID,
       client_secret: process.env.CLIENT_SECRET,
       code: request.query.code,
-      redirect_uri: 'http://localhost:3000'
+      redirect_uri: 'https://dribbbler-players-card.netlify.app'
     }).then((res) => {
       response.redirect(`/fetch-data?access_token=${res.data.access_token}`);
     }).catch((error) => console.log(error))
