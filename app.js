@@ -80,7 +80,7 @@ app.use('/fetch-data', (request, response, error) => {
     let promises = []
     urls.forEach((item) => {
       promises.push(
-        axios(`https://dribbbler-player-card.herokuapp.com/stats?url=${item.html_url}`).then((res) => {
+        axios(`https://dribbbler-player-card-endpoint-ztm8i.ondigitalocean.app/stats?url=${item.html_url}`).then((res) => {
           data.push(res.data)
         }).catch((err) => console.log(err))
       )
